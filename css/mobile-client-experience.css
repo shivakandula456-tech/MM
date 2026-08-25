@@ -1,0 +1,635 @@
+/* ============================================================
+   MAITRA MOBILE CLIENT EXPERIENCE
+   Final mobile-only presentation layer.
+   IMPORTANT: all rules are scoped to <=700px so the approved
+   desktop/computer experience remains unchanged.
+   ============================================================ */
+
+@media (max-width: 700px) {
+  :root {
+    --cx-navy: #0b2947;
+    --cx-navy-deep: #071f37;
+    --cx-yellow: #ffbd00;
+    --cx-white: #ffffff;
+    --cx-nav-h: 84px;
+    --cx-safe-bottom: max(10px, env(safe-area-inset-bottom));
+    --cx-side: clamp(14px, 5vw, 22px);
+  }
+
+  /* ----------------------------------------------------------
+     TOP MOBILE HEADER — dark translucent hamburger over the hero
+     ---------------------------------------------------------- */
+  .site-header {
+    padding: max(10px, env(safe-area-inset-top)) var(--cx-side) 0 !important;
+    z-index: 1800 !important;
+  }
+
+  .site-header .nav-toggle {
+    width: 54px !important;
+    height: 54px !important;
+    border: 2px solid rgba(255,189,0,.92) !important;
+    border-radius: 11px !important;
+    background: rgba(7,31,55,.52) !important;
+    color: #fff !important;
+    box-shadow: 0 10px 28px rgba(0,0,0,.24) !important;
+    backdrop-filter: blur(7px) !important;
+    -webkit-backdrop-filter: blur(7px) !important;
+  }
+
+  .site-header .nav-toggle:hover,
+  .site-header .nav-toggle:focus-visible,
+  .site-header.is-menu-open .nav-toggle {
+    border-color: var(--cx-yellow) !important;
+    background: rgba(7,31,55,.76) !important;
+    color: #fff !important;
+  }
+
+  .site-header .nav-toggle .icon {
+    width: 29px !important;
+    height: 29px !important;
+  }
+
+  /* ----------------------------------------------------------
+     HERO — reproduce the supplied portrait/mobile composition
+     without changing the desktop hero.
+     ---------------------------------------------------------- */
+  .hero {
+    min-height: 100svh !important;
+    min-height: 100dvh !important;
+    height: 100svh !important;
+    height: 100dvh !important;
+  }
+
+  .hero-video,
+  .hero-poster {
+    object-position: 50% 48% !important;
+  }
+
+  .hero-overlay {
+    background:
+      linear-gradient(180deg,
+        rgba(4,22,39,.34) 0%,
+        rgba(4,22,39,.10) 22%,
+        rgba(4,22,39,.18) 50%,
+        rgba(4,22,39,.58) 74%,
+        rgba(4,22,39,.72) 100%),
+      linear-gradient(90deg,
+        rgba(4,22,39,.18) 0%,
+        rgba(4,22,39,.03) 52%,
+        rgba(4,22,39,.14) 100%) !important;
+  }
+
+  .hero-grid-bg {
+    opacity: .035 !important;
+  }
+
+  .hero-content {
+    width: calc(100% - 2 * var(--cx-side)) !important;
+    max-width: 430px !important;
+    height: 100% !important;
+    padding: calc(max(10px, env(safe-area-inset-top)) + 8px) 0
+             calc(var(--cx-nav-h) + 170px + var(--cx-safe-bottom)) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    box-sizing: border-box !important;
+  }
+
+  .hero-brand-row {
+    min-height: 126px !important;
+    height: 126px !important;
+    display: block !important;
+    position: relative !important;
+  }
+
+  .hero-brand {
+    top: 2px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: clamp(100px, 27vw, 122px) !important;
+    min-width: 0 !important;
+    height: auto !important;
+  }
+
+  .hero-eyebrow {
+    display: none !important;
+  }
+
+  .hero-copy {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: auto 0 0 !important;
+    padding: 0 !important;
+    text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+
+  .hero-kicker {
+    position: relative !important;
+    margin: 0 0 38px !important;
+    color: var(--cx-yellow) !important;
+    font-size: clamp(.64rem, 2.55vw, .82rem) !important;
+    line-height: 1.25 !important;
+    letter-spacing: .16em !important;
+    text-align: center !important;
+  }
+
+  .hero-kicker::after {
+    content: "";
+    display: block;
+    width: 56px;
+    height: 5px;
+    margin: 13px auto 0;
+    border-radius: 99px;
+    background: var(--cx-yellow);
+    box-shadow: 0 3px 10px rgba(255,189,0,.25);
+  }
+
+  .hero-title {
+    width: 100% !important;
+    max-width: 12.5ch !important;
+    margin: 0 auto 30px !important;
+    font-size: clamp(2.35rem, 11.9vw, 3.7rem) !important;
+    line-height: .92 !important;
+    letter-spacing: -.055em !important;
+    text-align: center !important;
+    text-transform: uppercase !important;
+  }
+
+  .hero-title .mobile-break {
+    display: inline !important;
+  }
+
+  .hero-support {
+    width: min(100%, 31ch) !important;
+    max-width: 31ch !important;
+    margin: 0 auto !important;
+    font-size: clamp(.86rem, 3.05vw, 1.03rem) !important;
+    line-height: 1.62 !important;
+    text-align: center !important;
+    color: rgba(255,255,255,.95) !important;
+    text-shadow: 0 3px 14px rgba(0,0,0,.42) !important;
+  }
+
+  .hero-actions {
+    display: none !important;
+  }
+
+  /* ----------------------------------------------------------
+     BOTTOM NAV — full-width white mobile app navigation.
+     Desktop command dock remains untouched.
+     ---------------------------------------------------------- */
+  .hero-command-dock {
+    position: fixed !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    height: calc(var(--cx-nav-h) + var(--cx-safe-bottom)) !important;
+    min-height: calc(var(--cx-nav-h) + var(--cx-safe-bottom)) !important;
+    max-height: calc(var(--cx-nav-h) + var(--cx-safe-bottom)) !important;
+    padding: 0 0 var(--cx-safe-bottom) !important;
+    margin: 0 !important;
+    border: 0 !important;
+    border-radius: 28px 28px 0 0 !important;
+    background: rgba(255,255,255,.98) !important;
+    box-shadow: 0 -8px 32px rgba(4,24,43,.20) !important;
+    backdrop-filter: blur(16px) saturate(125%) !important;
+    -webkit-backdrop-filter: blur(16px) saturate(125%) !important;
+    z-index: 1600 !important;
+    overflow: visible !important;
+    contain: layout paint !important;
+  }
+
+  .hero-command-dock::before {
+    content: "";
+    position: absolute;
+    top: -9px;
+    left: 50%;
+    width: 66px;
+    height: 18px;
+    transform: translateX(-50%);
+    border-radius: 12px 12px 0 0;
+    background: #fff;
+    box-shadow: 0 -2px 4px rgba(4,24,43,.04);
+  }
+
+  .hero-command-label {
+    display: none !important;
+  }
+
+  .hero-command-actions {
+    width: 100% !important;
+    height: var(--cx-nav-h) !important;
+    min-height: var(--cx-nav-h) !important;
+    display: grid !important;
+    grid-template-columns: repeat(5, minmax(0,1fr)) !important;
+    gap: 0 !important;
+    overflow: visible !important;
+    background: transparent !important;
+  }
+
+  .hero-command-item,
+  .hero-command-item:hover,
+  .hero-command-item:focus-visible {
+    position: relative !important;
+    min-width: 0 !important;
+    width: 100% !important;
+    height: var(--cx-nav-h) !important;
+    min-height: var(--cx-nav-h) !important;
+    padding: 8px 3px 6px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 5px !important;
+    border: 0 !important;
+    background: transparent !important;
+    color: var(--cx-navy) !important;
+    text-align: center !important;
+    transform: none !important;
+    border-radius: 16px !important;
+  }
+
+  .hero-command-item > span:not(.mobile-nav-icon) {
+    display: none !important;
+  }
+
+  .hero-command-item .mobile-nav-icon {
+    display: grid !important;
+    place-items: center !important;
+    width: 39px !important;
+    height: 39px !important;
+    flex: 0 0 39px !important;
+    color: var(--cx-navy) !important;
+  }
+
+  .hero-command-item .mobile-nav-icon svg {
+    width: 29px !important;
+    height: 29px !important;
+    display: block !important;
+  }
+
+  .hero-command-item strong {
+    display: block !important;
+    margin: 0 !important;
+    font-size: clamp(.53rem, 2.0vw, .66rem) !important;
+    line-height: 1.05 !important;
+    letter-spacing: .015em !important;
+    font-weight: 800 !important;
+    text-transform: uppercase !important;
+    color: inherit !important;
+  }
+
+  .hero-command-item em {
+    display: none !important;
+  }
+
+  .hero-command-item.is-primary {
+    background: transparent !important;
+    color: var(--cx-navy) !important;
+  }
+
+  .hero-command-item.is-current {
+    background: var(--cx-yellow) !important;
+    color: var(--cx-navy) !important;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.14) !important;
+  }
+
+  /* On the landing screen no navigation item is semantically active. */
+  body:not(:has(.panel-shell:not([hidden]))) .hero-command-item.is-current {
+    background: transparent !important;
+  }
+
+  .hero-command-item.is-current .mobile-nav-icon,
+  .hero-command-item.is-current strong {
+    color: var(--cx-navy) !important;
+  }
+
+  /* ----------------------------------------------------------
+     PROJECT ASSIST — wide CTA floating directly above the dock.
+     ---------------------------------------------------------- */
+  .project-assist-float {
+    left: 50% !important;
+    right: auto !important;
+    bottom: calc(var(--cx-nav-h) + var(--cx-safe-bottom) + 28px) !important;
+    transform: translateX(-50%) !important;
+    width: min(338px, calc(100vw - 48px)) !important;
+    min-width: 0 !important;
+    height: 72px !important;
+    min-height: 72px !important;
+    padding: 7px !important;
+    display: grid !important;
+    grid-template-columns: 58px minmax(0,1fr) 26px !important;
+    align-items: center !important;
+    gap: 12px !important;
+    border: 2px solid var(--cx-yellow) !important;
+    border-radius: 12px !important;
+    background: rgba(6,29,53,.96) !important;
+    color: #fff !important;
+    box-shadow: 0 14px 34px rgba(4,24,43,.30) !important;
+    z-index: 1550 !important;
+  }
+
+  .project-assist-float:hover,
+  .project-assist-float:focus-visible {
+    background: rgba(6,29,53,.98) !important;
+    border-color: #ffd34a !important;
+    color: #fff !important;
+    transform: translateX(-50%) translateY(-2px) !important;
+  }
+
+  .project-assist-float-icon {
+    width: 58px !important;
+    height: 58px !important;
+    flex: 0 0 58px !important;
+    display: grid !important;
+    place-items: center !important;
+    border-radius: 5px !important;
+    background: var(--cx-yellow) !important;
+    color: var(--cx-navy) !important;
+    font: 800 2rem/1 Arial, sans-serif !important;
+  }
+
+  .project-assist-float > span:nth-child(2) {
+    display: block !important;
+    color: #fff !important;
+    font: 800 .78rem/1 var(--font-mono) !important;
+    letter-spacing: .12em !important;
+    text-transform: uppercase !important;
+    text-align: left !important;
+    white-space: nowrap !important;
+  }
+
+  .project-assist-float-arrow {
+    display: grid !important;
+    place-items: center !important;
+    color: var(--cx-yellow) !important;
+    font: 500 2rem/1 Arial, sans-serif !important;
+  }
+
+  /* Internal experience panels retain their existing full-screen priority. */
+  body:has(.panel-shell:not([hidden])) .hero-command-dock,
+  body:has(.lightbox:not([hidden])) .hero-command-dock,
+  body:has(#mobileMenu:not([hidden])) .hero-command-dock {
+    display: none !important;
+  }
+
+  body:has(.panel-shell:not([hidden])) .project-assist-float,
+  body:has(.modal-shell:not([hidden])) .project-assist-float,
+  body:has(.lightbox:not([hidden])) .project-assist-float,
+  body:has(#mobileMenu:not([hidden])) .project-assist-float {
+    display: none !important;
+  }
+
+  /* Internal panels need breathing room above the persistent dock. */
+  .panel-body {
+    padding-bottom: calc(120px + var(--cx-safe-bottom)) !important;
+  }
+
+  /* ----------------------------------------------------------
+     TEAM PANEL — preserve the large desktop portrait concept,
+     but make the active profile usable on a phone.
+     ---------------------------------------------------------- */
+  .team-showcase {
+    padding-bottom: calc(120px + var(--cx-safe-bottom)) !important;
+  }
+
+  .team-feature-visual.is-photo img {
+    object-position: center 28% !important;
+  }
+
+  /* ----------------------------------------------------------
+     MENU — the hamburger remains the secondary/mobile utility.
+     ---------------------------------------------------------- */
+  .mobile-menu {
+    z-index: 1700 !important;
+  }
+}
+
+@media (max-width: 380px) {
+  :root { --cx-nav-h: 80px; }
+
+  .hero-brand-row { min-height: 116px !important; height: 116px !important; }
+  .hero-kicker { margin-bottom: 28px !important; }
+  .hero-title { font-size: clamp(2.15rem, 11.8vw, 3.1rem) !important; margin-bottom: 24px !important; }
+  .hero-support { font-size: .82rem !important; line-height: 1.55 !important; }
+  .project-assist-float { height: 66px !important; min-height: 66px !important; grid-template-columns: 52px minmax(0,1fr) 22px !important; }
+  .project-assist-float-icon { width: 52px !important; height: 52px !important; flex-basis: 52px !important; }
+  .hero-command-item .mobile-nav-icon { width: 34px !important; height: 34px !important; flex-basis: 34px !important; }
+  .hero-command-item .mobile-nav-icon svg { width: 25px !important; height: 25px !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-command-item,
+  .project-assist-float { transition: none !important; }
+}
+
+
+/* ============================================================
+   MOBILE CLIENT POLISH v4
+   Scope: mobile only. Desktop/computer presentation is unchanged.
+   ============================================================ */
+@media (max-width: 700px) {
+  .site-header .nav-toggle {
+    width: 54px !important;
+    height: 54px !important;
+    padding: 0 !important;
+    border: 2px solid rgba(255,189,0,.92) !important;
+    border-radius: 11px !important;
+    background: rgba(248,250,252,.94) !important;
+    color: #0b2947 !important;
+    box-shadow: 0 12px 28px rgba(7,31,55,.16), inset 0 1px 0 rgba(255,255,255,.9) !important;
+    backdrop-filter: blur(9px) saturate(120%) !important;
+    -webkit-backdrop-filter: blur(9px) saturate(120%) !important;
+  }
+
+  .site-header .nav-toggle:hover,
+  .site-header .nav-toggle:focus-visible,
+  .site-header .nav-toggle:active {
+    background: #fff !important;
+    border-color: #ffbd00 !important;
+    color: #0b2947 !important;
+    box-shadow: 0 14px 30px rgba(7,31,55,.18), 0 0 0 3px rgba(255,189,0,.14) !important;
+    outline: none !important;
+  }
+
+  .site-header.is-menu-open .nav-toggle {
+    background: rgba(255,255,255,.98) !important;
+    border-color: #ffbd00 !important;
+    color: #0b2947 !important;
+  }
+
+  .site-header .nav-toggle .icon {
+    width: 25px !important;
+    height: 25px !important;
+    color: inherit !important;
+    stroke-width: 2.1 !important;
+  }
+
+  .mobile-menu {
+    background: #f4f7fa !important;
+    color: #0b2947 !important;
+  }
+
+  .mobile-menu::before {
+    background:
+      radial-gradient(circle at 84% 10%, rgba(23,105,255,.045), transparent 28%),
+      radial-gradient(circle at 8% 82%, rgba(47,168,197,.04), transparent 26%),
+      linear-gradient(145deg, #f8fafc 0%, #f3f7fa 58%, #edf3f7 100%) !important;
+  }
+
+  /* Consistent mobile icon family. Desktop command icons are untouched. */
+  .hero-command-item .mobile-nav-icon {
+    width: 40px !important;
+    height: 40px !important;
+    flex: 0 0 40px !important;
+    display: block !important;
+    color: transparent !important;
+    fill: none !important;
+    stroke: transparent !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    background-size: 30px 30px !important;
+  }
+
+  .hero-command-item:nth-child(1) .mobile-nav-icon {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230b2947' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 20V7a2 2 0 0 1 2-2h5v15M4 20h16M14 20V9a2 2 0 0 1 2-2h4v13'/%3E%3Cpath d='M7 9h1M7 12h1M7 15h1M17 10h1M17 13h1M17 16h1'/%3E%3C/svg%3E") !important;
+  }
+  .hero-command-item:nth-child(2) .mobile-nav-icon {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230b2947' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1'/%3E%3Ccircle cx='12' cy='12' r='3.2'/%3E%3Cpath d='m14.7 14.7 2.1 2.1'/%3E%3C/svg%3E") !important;
+  }
+  .hero-command-item:nth-child(3) .mobile-nav-icon {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230b2947' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 18h14M6 15h12M7 12h10M8 9h8M9 6h6M12 3v15M8 20h8'/%3E%3Cpath d='M17.5 4.5 19 3l1.5 1.5L19 6z'/%3E%3C/svg%3E") !important;
+  }
+  .hero-command-item:nth-child(4) .mobile-nav-icon {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230b2947' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='9' cy='8' r='3'/%3E%3Ccircle cx='17' cy='9' r='2.5'/%3E%3Cpath d='M3 20c.4-4 2.5-6 6-6s5.6 2 6 6M14 15c3.2-.3 5.6 1.2 6.5 5'/%3E%3C/svg%3E") !important;
+  }
+  .hero-command-item:nth-child(5) .mobile-nav-icon {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230b2947' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 4h4l1.2 4.2-2.2 1.6a12 12 0 0 0 5.2 5.2l1.6-2.2L20 14v4a2 2 0 0 1-2 2A14 14 0 0 1 4 6a2 2 0 0 1 2-2z'/%3E%3C/svg%3E") !important;
+  }
+
+  .hero-command-item .mobile-nav-icon svg {
+    display: none !important;
+  }
+
+  .hero-command-item strong {
+    font-size: clamp(.55rem, 2.05vw, .68rem) !important;
+    line-height: 1.05 !important;
+    letter-spacing: .02em !important;
+    white-space: nowrap !important;
+  }
+
+  /* Project Assist: keep full label + arrow inside the viewport. */
+  .project-assist-float {
+    width: min(338px, calc(100vw - 32px)) !important;
+    max-width: calc(100vw - 32px) !important;
+    height: 72px !important;
+    min-height: 72px !important;
+    padding: 6px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+  }
+
+  .project-assist-float-icon {
+    width: 56px !important;
+    height: 56px !important;
+    min-width: 56px !important;
+    flex: 0 0 56px !important;
+  }
+
+  .project-assist-float > span:nth-child(2) {
+    min-width: 0 !important;
+    flex: 1 1 auto !important;
+    overflow: visible !important;
+    white-space: nowrap !important;
+    text-overflow: clip !important;
+    font-size: clamp(.68rem, 3.0vw, .78rem) !important;
+    letter-spacing: .075em !important;
+    line-height: 1 !important;
+  }
+
+  .project-assist-float-arrow {
+    display: grid !important;
+    width: 24px !important;
+    min-width: 24px !important;
+    flex: 0 0 24px !important;
+    place-items: center !important;
+    margin-left: auto !important;
+    font-size: 1.9rem !important;
+    line-height: 1 !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .site-header .nav-toggle {
+    width: 52px !important;
+    height: 52px !important;
+  }
+  .hero-command-item .mobile-nav-icon {
+    width: 36px !important;
+    height: 36px !important;
+    flex-basis: 36px !important;
+    background-size: 27px 27px !important;
+  }
+  .project-assist-float {
+    width: calc(100vw - 24px) !important;
+    max-width: calc(100vw - 24px) !important;
+    height: 66px !important;
+    min-height: 66px !important;
+    padding: 5px !important;
+  }
+  .project-assist-float-icon {
+    width: 52px !important;
+    height: 52px !important;
+    min-width: 52px !important;
+    flex-basis: 52px !important;
+  }
+  .project-assist-float > span:nth-child(2) {
+    font-size: .65rem !important;
+    letter-spacing: .055em !important;
+  }
+  .project-assist-float-arrow {
+    width: 22px !important;
+    min-width: 22px !important;
+    flex-basis: 22px !important;
+  }
+}
+
+/* ============================================================
+   DESKTOP TEAM PORTRAIT CONTAINMENT
+   Keep the approved portrait fully inside its feature frame.
+   Do not crop the source image or let hover scaling push it
+   outside the left-hand box.
+   ============================================================ */
+@media (min-width: 761px) {
+  .team-feature,
+  .team-feature-visual {
+    overflow: hidden !important;
+  }
+
+  .team-feature-visual {
+    min-width: 0 !important;
+    min-height: 0 !important;
+    height: 100% !important;
+  }
+
+  .team-feature-visual.is-photo img {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    object-fit: contain !important;
+    object-position: center bottom !important;
+    transform: none !important;
+  }
+
+  .team-feature:hover .team-feature-visual.is-photo img {
+    transform: none !important;
+  }
+}
